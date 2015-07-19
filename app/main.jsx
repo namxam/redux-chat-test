@@ -4,6 +4,7 @@ import React from 'react';
 import { createRedux } from 'redux';
 import { Provider } from 'redux/react';
 
+import Chat from 'components/chat/entry';
 
 var todos = (state = [], action) => {
   switch (action.type) {
@@ -14,28 +15,17 @@ var todos = (state = [], action) => {
 
 const redux = createRedux({ todos: todos });
 
-class ChatApp extends React.Component {
-  render() {
-    return (
-      <div className="chat">
-        Hello
-      </div>
-    );
-  }
-}
-
 class App {
   render() {
     return (
       <Provider redux={redux}>
         {() =>
-          <ChatApp />
+          <Chat />
         }
       </Provider>
     );
   }
 }
-
 
 React.render(<App />, document.getElementById('app'));
 
