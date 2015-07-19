@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'redux/react';
 
+@connect(state => ({ currentChat: state.currentChat }))
 class ChatInterface extends React.Component {
   componentWillUpdate() {
     let node = React.findDOMNode(this.refs.messageContainer);
@@ -21,15 +23,18 @@ class ChatInterface extends React.Component {
   }
 
   render() {
+    console.log('ChatInterface', 'render');
+    const { currentChat } = this.props;
+
     return (
       <div className="chat-interface">
         <header>
           <strong>Chat interface:</strong>{' '}
-          {this.props.currentChat.name}
+          {this.props.currentChat.chat.name}
         </header>
         <section ref="messageContainer" className="chat-interface__messages">
           <ol>
-            {this.props.currentMessages.map((message) => {
+            {this.props.currentChat.messages.map((message) => {
               return (
                 <li key={`message-${message.id}`} className="chat-interface__message">
                   <em>{message.user.name}</em>

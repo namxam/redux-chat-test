@@ -11,12 +11,21 @@ const redux = createRedux({ chats, messages, currentChat });
 
 import Chat from 'components/chat/entry';
 
+import * as ChatActions from 'actions/chat';
+
 class App {
+  generateMessage() {
+    redux.dispatch(ChatActions.generateMessage())
+  }
+
   render() {
     return (
       <Provider redux={redux}>
         {() =>
-          <Chat />
+          <div>
+            <button onClick={this.generateMessage}>Generate message</button>
+            <Chat />
+          </div>
         }
       </Provider>
     );

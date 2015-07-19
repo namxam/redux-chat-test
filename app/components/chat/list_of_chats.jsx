@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'redux/react';
 import * as ChatActions from 'actions/chat';
 
+@connect(state => ({ chats: state.chats }))
 class ListOfChats extends React.Component {
   constructor(props) {
     super(props);
@@ -12,15 +14,16 @@ class ListOfChats extends React.Component {
   }
 
   render() {
+    console.log('ListOfChats', 'render');
     return(
       <div className="chat-list">
         <strong>List of Chats</strong>
         <ol>
           {this.props.chats.map((chat) => {
             let unread;
-            if(this.props.unreadCounts[chat.id] > 0) {
-              unread = <span className="chat-list__unread">{this.props.unreadCounts[chat.id]}</span>;
-            }
+            // if(this.props.unreadCounts[chat.id] > 0) {
+            //   unread = <span className="chat-list__unread">{this.props.unreadCounts[chat.id]}</span>;
+            // }
 
             return(
               <li key={`chat-${chat.id}`}>
