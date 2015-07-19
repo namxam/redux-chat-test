@@ -4,16 +4,10 @@ import React from 'react';
 import { createRedux } from 'redux';
 import { Provider } from 'redux/react';
 
+import chats from 'reducers/chats'
+const redux = createRedux({ chats });
+
 import Chat from 'components/chat/entry';
-
-var todos = (state = [], action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-}
-
-const redux = createRedux({ todos: todos });
 
 class App {
   render() {
@@ -28,7 +22,6 @@ class App {
 }
 
 React.render(<App />, document.getElementById('app'));
-
 
 // // Setup project
 //
