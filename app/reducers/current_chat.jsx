@@ -8,9 +8,13 @@ export default function currentChat(state = initialState, action) {
     case 'SELECT_CHAT':
       return { chat: action.chat, messages: action.messages };
     case 'ADD_MESSAGE':
-      let {messages} = state;
-      messages.push(action.message);
-      return {...state, messages: messages}
+      let {chat, messages} = state;
+      if(action.message.chat_id == chat.id) {
+        messages.push(action.message);
+        return {...state, messages: messages}
+      } else {
+        return state
+      }
     default:
       return state;
   }
