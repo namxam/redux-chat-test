@@ -15,15 +15,16 @@ class ListOfChats extends React.Component {
 
   render() {
     console.log('ListOfChats', 'render');
+    const {chats, currentChatId} = this.props.chats;
     return(
       <div className="chat-list">
         <strong>List of Chats</strong>
         <ol>
-          {this.props.chats.map((chat) => {
+          {chats.map((chat) => {
             let unread;
-            // if(this.props.unreadCounts[chat.id] > 0) {
-            //   unread = <span className="chat-list__unread">{this.props.unreadCounts[chat.id]}</span>;
-            // }
+            if(chat.unread > 0) {
+              unread = <span className="chat-list__unread">{chat.unread}</span>;
+            }
 
             return(
               <li key={`chat-${chat.id}`}>

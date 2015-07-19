@@ -4,7 +4,7 @@ export function selectChat(chatId) {
 
     dispatch({
       type: 'SELECT_CHAT',
-      chat: chats.find(chat => chat.id == chatId),
+      chat: chats.chats.find(chat => chat.id == chatId),
       messages: messages.filter(message => message.chat_id == chatId)
     })
   };
