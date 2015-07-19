@@ -4,8 +4,10 @@ import React from 'react';
 import { createRedux } from 'redux';
 import { Provider } from 'redux/react';
 
-import chats from 'reducers/chats'
-const redux = createRedux({ chats });
+import chats from 'reducers/chats';
+import messages from 'reducers/messages';
+import currentChat from 'reducers/current_chat';
+const redux = createRedux({ chats, messages, currentChat });
 
 import Chat from 'components/chat/entry';
 

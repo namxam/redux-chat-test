@@ -1,8 +1,14 @@
 import React from 'react';
+import * as ChatActions from 'actions/chat';
 
 class ListOfChats extends React.Component {
+  constructor(props) {
+    super(props);
+    this.selectChat = this.selectChat.bind(this);
+  }
+
   selectChat(id) {
-    console.log('Change chat selection');
+    this.props.dispatch(ChatActions.selectChat(id));
   }
 
   render() {
